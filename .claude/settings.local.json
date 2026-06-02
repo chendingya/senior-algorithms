@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(pptx)",
+      "Bash(python -m markitdown \"碰撞检测汇报V1 曹涵兮.pptx\")",
+      "WebSearch",
+      "mcp__tavily__tavily_search",
+      "mcp__tavily__tavily_extract"
+    ]
+  }
+}
