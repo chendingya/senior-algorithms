@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Data-Highlight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      background-color: #000000;
+      font-family: 'PingFang SC', 'Microsoft YaHei', 'PingFang TC', 'Hiragino Sans GB', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    .title-block {
+      position: absolute;
+      left: 80px;
+      top: 100px;
+      width: 1680px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .title-block [data-slot="title"] {
+      font-weight: 600;
+      font-size: 64px;
+      line-height: 1.25;
+      color: #FFFFFF;
+    }
+    .title-block [data-slot="subtitle"] {
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 1.4;
+      color: #FFFFFF;
+      /* 等效灰色（避免 opacity 导出丢失） */
+      color: #999999; /* white @ 60% on black */
+    }
+    .data-block {
+      position: absolute;
+      top: 441px;
+      width: 453px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .data-block [data-slot$="Num"] {
+      font-weight: 700;
+      font-size: 140px;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: #73CD94;
+    }
+    .data-block [data-slot$="Desc"] {
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1.43;
+      color: #FFFFFF;
+      /* 等效灰色（避免 opacity 导出丢失） */
+      color: #B3B3B3; /* white @ 70% on black */
+    }
+    .data-block-1 { left: 80px; }
+    .data-block-2 { left: 693px; }
+    .data-block-3 { left: 1306px; }
+    .slogan-block {
+      position: absolute;
+      left: 80px;
+      top: 882px;
+      width: 1197px;
+    }
+    .slogan-block [data-slot="slogan"] {
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 1.5;
+      color: #FFFFFF;
+      /* 等效灰色（避免 opacity 导出丢失） */
+      color: #666666; /* white @ 40% on black */
+    }
+  </style>
+</head>
+<body>
+  <div class="slide" data-template="data-highlight">
+    <div class="title-block">
+      <h1 data-slot="title">GJK——复杂度分析</h1>
+      <p data-slot="subtitle">Complexity Analysis</p>
+    </div>
+    <div class="data-block data-block-1">
+      <span data-slot="data1Num">O(1)</span>
+      <p data-slot="data1Desc">迭代次数有常数上界：2D≤3次，3D≤4次。单纯形最多3个点（三角形）或4个点（四面体）</p>
+    </div>
+    <div class="data-block data-block-2">
+      <span data-slot="data2Num">O(n) / O(log n)</span>
+      <p data-slot="data2Desc">单次判定代价取决于Support函数实现。朴素实现需遍历所有顶点O(n)，预处理可降到O(log n)</p>
+    </div>
+    <div class="data-block data-block-3">
+      <span data-slot="data3Num">≈O(1)</span>
+      <p data-slot="data3Desc">增量模式：物理引擎用上一帧单纯形作初始猜测，帧间变化小时通常1-2次迭代就收敛</p>
+    </div>
+    <div class="slogan-block">
+      <p data-slot="slogan">空间复杂度恒为O(1)——仅存储当前单纯形，最多4个点。正是这种稳定性和小开销使GJK成为实时碰撞检测的首选</p>
+    </div>
+  </div>
+
+
+</body></html>

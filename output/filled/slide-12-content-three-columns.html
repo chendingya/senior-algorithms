@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Content-Three-Columns</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      background-color: #FFFFFF;
+      font-family: 'PingFang SC', 'Microsoft YaHei', 'PingFang TC', 'Hiragino Sans GB', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    .title-block {
+      position: absolute;
+      left: 80px;
+      top: 100px;
+      width: 1680px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .title-block [data-slot="title"] {
+      font-weight: 600;
+      font-size: 64px;
+      line-height: 1.25;
+      color: #000000;
+    }
+    .title-block [data-slot="subtitle"] {
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 1.4;
+      color: #000000;
+      /* 等效灰色（避免 opacity 导出丢失） */
+      color: #666666; /* black @ 60% on white */
+    }
+    .content-row {
+      position: absolute;
+      left: 80px;
+      top: 304px;
+      width: 1760px;
+      height: 676px;
+      display: flex;
+      flex-direction: row;
+      gap: 32px;
+      align-items: stretch;
+    }
+    .content-card {
+      flex: 1;
+      background-color: #F1F1F1;
+      border-radius: 16px;
+      padding: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 84px;
+    }
+    .card-image {
+      width: 140px;
+      height: 140px;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #FFFFFF;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-image img {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+    }
+    .card-text {
+      display: flex;
+      flex-direction: column;
+      gap: 27px;
+      flex: 1;
+    }
+    .content-card [data-slot$="Heading"] {
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 1.22;
+      color: #000000;
+    }
+    .content-card [data-slot$="Copy"] {
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1.22;
+      color: #000000;
+      /* 等效灰色（避免 opacity 导出丢失） */
+      color: #4D4D4D; /* black @ 70% on white */
+    }
+  </style>
+</head>
+<body>
+  <div class="slide" data-template="content-three-columns">
+    <div class="title-block">
+      <h1 data-slot="title">SAP——算法流程与复杂度</h1>
+      <p data-slot="subtitle">Pseudocode &amp; Complexity</p>
+    </div>
+    <div class="content-row">
+      <div class="content-card">
+        <div class="card-image">
+          <img data-slot="block1Image" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIiB2aWV3Qm94PSIwIDAgMTQwIDE0MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI0YxRjFGMSIvPjxwYXRoIGZpbGw9IiM5OTkiIGQ9Ik03Ni43MiA4OC44Nmg5LjF2Ni40OGgtMjh2LTYuNDhoMTAuMjV2LTI5LjVxMC0xLjc1LjExLTMuNjFsLTcuMjggNi4wOXEtLjY0LjQ5LTEuMjUuNjItLjYxLjEyLTEuMTUuMDEtLjU1LS4xLS45Ny0uMzYtLjQyLS4yNy0uNjItLjU4bC0yLjczLTMuNzUgMTUuNDMtMTMuMTJoNy4xMXoiLz48L3N2Zz4=" alt="">
+        </div>
+        <div class="card-text">
+          <h2 data-slot="block1Heading">排序阶段</h2>
+          <p data-slot="block1Copy">首次帧用快速排序O(n log n)，后续帧序列几乎有序，改用插入排序接近O(n)。这是SAP高效的关键——利用帧间连续性避免重复排序。</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="card-image">
+          <img data-slot="block2Image" src="data:image/svg+xml;base64,PCEtLSBAbGljZW5zZSBsdWNpZGUtc3RhdGljIHYwLjQ2OC4wIC0gSVNDIC0tPgo8c3ZnCiAgY2xhc3M9Imx1Y2lkZSBsdWNpZGUtc2NhbiIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgd2lkdGg9IjI0IgogIGhlaWdodD0iMjQiCiAgdmlld0JveD0iMCAwIDI0IDI0IgogIGZpbGw9Im5vbmUiCiAgc3Ryb2tlPSJjdXJyZW50Q29sb3IiCiAgc3Ryb2tlLXdpZHRoPSIyIgogIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIKICBzdHJva2UtbGluZWpvaW49InJvdW5kIgo+CiAgPHBhdGggZD0iTTMgN1Y1YTIgMiAwIDAgMSAyLTJoMiIgLz4KICA8cGF0aCBkPSJNMTcgM2gyYTIgMiAwIDAgMSAyIDJ2MiIgLz4KICA8cGF0aCBkPSJNMjEgMTd2MmEyIDIgMCAwIDEtMiAyaC0yIiAvPgogIDxwYXRoIGQ9Ik03IDIxSDVhMiAyIDAgMCAxLTItMnYtMiIgLz4KPC9zdmc+Cg==" alt="">
+        </div>
+        <div class="card-text">
+          <h2 data-slot="block2Heading">扫描阶段</h2>
+          <p data-slot="block2Copy">从左到右遍历，利用不等式传递性提前break终止内层循环。X轴重叠后还需检查Y轴（和Z轴），复杂度O(n+m)，m为实际重叠数。</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="card-image">
+          <img data-slot="block3Image" src="data:image/svg+xml;base64,PCEtLSBAbGljZW5zZSBsdWNpZGUtc3RhdGljIHYwLjQ2OC4wIC0gSVNDIC0tPgo8c3ZnCiAgY2xhc3M9Imx1Y2lkZSBsdWNpZGUtYWN0aXZpdHkiCiAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iY3VycmVudENvbG9yIgogIHN0cm9rZS13aWR0aD0iMiIKICBzdHJva2UtbGluZWNhcD0icm91bmQiCiAgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIKPgogIDxwYXRoIGQ9Ik0yMiAxMmgtMi40OGEyIDIgMCAwIDAtMS45MyAxLjQ2bC0yLjM1IDguMzZhLjI1LjI1IDAgMCAxLS40OCAwTDkuMjQgMi4xOGEuMjUuMjUgMCAwIDAtLjQ4IDBsLTIuMzUgOC4zNkEyIDIgMCAwIDEgNC40OSAxMkgyIiAvPgo8L3N2Zz4K" alt="">
+        </div>
+        <div class="card-text">
+          <h2 data-slot="block3Heading">Output-Sensitive</h2>
+          <p data-slot="block3Copy">复杂度与输出规模挂钩（output-sensitive），碰撞对越少越接近O(n)。最坏情况（对象剧烈穿插完全乱序）退化为O(n²)。关键：m远小于n²。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body></html>

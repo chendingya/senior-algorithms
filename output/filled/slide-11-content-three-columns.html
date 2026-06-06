@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Content-Three-Columns</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      background-color: #FFFFFF;
+      font-family: 'PingFang SC', 'Microsoft YaHei', 'PingFang TC', 'Hiragino Sans GB', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    .title-block {
+      position: absolute;
+      left: 80px;
+      top: 100px;
+      width: 1680px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .title-block [data-slot="title"] {
+      font-weight: 600;
+      font-size: 64px;
+      line-height: 1.25;
+      color: #000000;
+    }
+    .title-block [data-slot="subtitle"] {
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 1.4;
+      color: #000000;
+      /* 等效灰色（避免 opacity 导出丢失） */
+      color: #666666; /* black @ 60% on white */
+    }
+    .content-row {
+      position: absolute;
+      left: 80px;
+      top: 304px;
+      width: 1760px;
+      height: 676px;
+      display: flex;
+      flex-direction: row;
+      gap: 32px;
+      align-items: stretch;
+    }
+    .content-card {
+      flex: 1;
+      background-color: #F1F1F1;
+      border-radius: 16px;
+      padding: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 84px;
+    }
+    .card-image {
+      width: 140px;
+      height: 140px;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #FFFFFF;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-image img {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+    }
+    .card-text {
+      display: flex;
+      flex-direction: column;
+      gap: 27px;
+      flex: 1;
+    }
+    .content-card [data-slot$="Heading"] {
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 1.22;
+      color: #000000;
+    }
+    .content-card [data-slot$="Copy"] {
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1.22;
+      color: #000000;
+      /* 等效灰色（避免 opacity 导出丢失） */
+      color: #4D4D4D; /* black @ 70% on white */
+    }
+  </style>
+</head>
+<body>
+  <div class="slide" data-template="content-three-columns">
+    <div class="title-block">
+      <h1 data-slot="title">SAP——设计思想</h1>
+      <p data-slot="subtitle">Design Philosophy</p>
+    </div>
+    <div class="content-row">
+      <div class="content-card">
+        <div class="card-image">
+          <img data-slot="block1Image" src="data:image/svg+xml;base64,PCEtLSBAbGljZW5zZSBsdWNpZGUtc3RhdGljIHYwLjQ2OC4wIC0gSVNDIC0tPgo8c3ZnCiAgY2xhc3M9Imx1Y2lkZSBsdWNpZGUtYXJyb3ctZG93biIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgd2lkdGg9IjI0IgogIGhlaWdodD0iMjQiCiAgdmlld0JveD0iMCAwIDI0IDI0IgogIGZpbGw9Im5vbmUiCiAgc3Ryb2tlPSJjdXJyZW50Q29sb3IiCiAgc3Ryb2tlLXdpZHRoPSIyIgogIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIKICBzdHJva2UtbGluZWpvaW49InJvdW5kIgo+CiAgPHBhdGggZD0iTTEyIDV2MTQiIC8+CiAgPHBhdGggZD0ibTE5IDEyLTcgNy03LTciIC8+Cjwvc3ZnPgo=" alt="">
+        </div>
+        <div class="card-text">
+          <h2 data-slot="block1Heading">降维策略</h2>
+          <p data-slot="block1Copy">SAP的设计思想是「降维」——把二维碰撞简化为一维区间重叠问题。将物体包围盒投影到坐标轴，排序后扫描找重叠。这个算法最早出自Baraff 1992年博士论文。</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="card-image">
+          <img data-slot="block2Image" src="data:image/svg+xml;base64,PCEtLSBAbGljZW5zZSBsdWNpZGUtc3RhdGljIHYwLjQ2OC4wIC0gSVNDIC0tPgo8c3ZnCiAgY2xhc3M9Imx1Y2lkZSBsdWNpZGUtY2xvY2siCiAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iY3VycmVudENvbG9yIgogIHN0cm9rZS13aWR0aD0iMiIKICBzdHJva2UtbGluZWNhcD0icm91bmQiCiAgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIKPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIiAvPgogIDxwb2x5bGluZSBwb2ludHM9IjEyIDYgMTIgMTIgMTYgMTQiIC8+Cjwvc3ZnPgo=" alt="">
+        </div>
+        <div class="card-text">
+          <h2 data-slot="block2Heading">时间局部性</h2>
+          <p data-slot="block2Copy">关键洞察：帧与帧之间，对象位置变化很小→排序顺序几乎不变→插入排序接近O(n)。这就是时间局部性(Temporal Coherence)，由Cohen等人1995年I-COLLIDE系统化。</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="card-image">
+          <img data-slot="block3Image" src="data:image/svg+xml;base64,PCEtLSBAbGljZW5zZSBsdWNpZGUtc3RhdGljIHYwLjQ2OC4wIC0gSVNDIC0tPgo8c3ZnCiAgY2xhc3M9Imx1Y2lkZSBsdWNpZGUtc2Npc3NvcnMiCiAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iY3VycmVudENvbG9yIgogIHN0cm9rZS13aWR0aD0iMiIKICBzdHJva2UtbGluZWNhcD0icm91bmQiCiAgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIKPgogIDxjaXJjbGUgY3g9IjYiIGN5PSI2IiByPSIzIiAvPgogIDxwYXRoIGQ9Ik04LjEyIDguMTIgMTIgMTIiIC8+CiAgPHBhdGggZD0iTTIwIDQgOC4xMiAxNS44OCIgLz4KICA8Y2lyY2xlIGN4PSI2IiBjeT0iMTgiIHI9IjMiIC8+CiAgPHBhdGggZD0iTTE0LjggMTQuOCAyMCAyMCIgLz4KPC9zdmc+Cg==" alt="">
+        </div>
+        <div class="card-text">
+          <h2 data-slot="block3Heading">不等式传递性</h2>
+          <p data-slot="block3Copy">若已知A.right ≤ B.left且B.right ≤ C.left，由传递性：A.right ≤ C.left，无需检测A与C，直接跳过！排序让这个剪枝可以大规模生效。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body></html>

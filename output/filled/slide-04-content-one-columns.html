@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Content-One-Columns</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      background-color: #FFFFFF;
+      font-family: 'PingFang SC', 'Microsoft YaHei', 'PingFang TC', 'Hiragino Sans GB', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    .title-block {
+      position: absolute;
+      left: 80px;
+      top: 100px;
+      width: 1680px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .title-block [data-slot="title"] {
+      font-weight: 600;
+      font-size: 64px;
+      line-height: 1.25;
+      color: #000000;
+    }
+    .title-block [data-slot="subtitle"] {
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 1.4;
+      color: #000000;
+      /* 等效灰色（避免 opacity 导出丢失） */
+      color: #666666; /* black @ 60% on white */
+    }
+    .content-row {
+      position: absolute;
+      left: 80px;
+      top: 304px;
+      width: 1760px;
+      display: flex;
+      flex-direction: row;
+      gap: 32px;
+      height: 676px; /* 固定高度：更美观、更稳定 */
+      align-items: stretch;
+    }
+    .content-block {
+      flex: 1;
+      background-color: #F1F1F1;
+      border-radius: 16px;
+      padding: 40px 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      height: 676px; /* 与行容器保持一致 */
+    }
+    .content-block .block-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      min-height: 283px;
+    }
+    .content-block [data-slot$="Heading"] {
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 1.22;
+      color: #000000;
+    }
+    .content-block [data-slot$="Copy"] {
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1.43;
+      color: #000000;
+      /* 等效灰色（避免 opacity 导出丢失） */
+      color: #4D4D4D; /* black @ 70% on white */
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide" data-template="content-one-columns">
+    <div class="title-block">
+      <h1 data-slot="title">碰撞检测问题从何而来</h1>
+      <p data-slot="subtitle">Why Collision Detection Matters</p>
+    </div>
+    <div class="content-row">
+      <div class="content-block">
+        <div class="block-inner">
+          <h2 data-slot="block1Heading">问题背景</h2>
+          <p data-slot="block1Copy">玩家在游戏中看到的是穿模、卡墙这些体验问题，但开发者背后面对的，是碰撞检测这个算法问题。假设场景里有一万个对象，暴力两两检测的复杂度是O(N²)，每帧需要执行约五千万次比较——这在实时渲染中是完全不可接受的。</p>
+        </div>
+      </div>
+      <div class="content-block">
+        <div class="block-inner">
+          <h2 data-slot="block2Heading">核心挑战</h2>
+          <p data-slot="block2Copy">真正困难的不是「两个物体能不能碰」，而是「在一万个对象中，哪些对值得做精确判断」。这就是碰撞检测流水线要解决的核心问题——先粗筛缩小范围，再精算得出结论。游戏算法千千万，碰撞检测很难办。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body></html>

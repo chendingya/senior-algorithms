@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Comparison</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      background-color: #FFFFFF;
+      font-family: 'PingFang SC', 'Microsoft YaHei', 'PingFang TC', 'Hiragino Sans GB', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    .title-block {
+      position: absolute;
+      left: 80px;
+      top: 100px;
+      width: 1680px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .title-block [data-slot="title"] {
+      font-weight: 600;
+      font-size: 64px;
+      line-height: 1.25;
+      color: #000000;
+    }
+    .title-block [data-slot="subtitle"] {
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 1.4;
+      color: #666666;
+    }
+    .comparison-row {
+      position: absolute;
+      left: 80px;
+      top: 304px;
+      width: 1760px;
+      display: flex;
+      flex-direction: row;
+      gap: 32px;
+      height: 676px;
+      align-items: stretch;
+    }
+    .comparison-col {
+      flex: 1;
+      border-radius: 16px;
+      padding: 48px 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .col-left {
+      background-color: #E8F8EB;
+    }
+    .col-right {
+      background-color: #F1F1F1;
+    }
+    .col-header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-bottom: 36px;
+      border-bottom: 2px solid rgba(0,0,0,0.08);
+      margin-bottom: 36px;
+      flex-shrink: 0;
+    }
+    .col-left .col-header { border-bottom-color: rgba(0,0,0,0.1); }
+    .col-header [data-slot$="Label"] {
+      font-weight: 600;
+      font-size: 44px;
+      line-height: 1.22;
+      color: #000000;
+    }
+    .col-items {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      flex: 1;
+    }
+    .col-items [data-slot$="Item1"],
+    .col-items [data-slot$="Item2"],
+    .col-items [data-slot$="Item3"],
+    .col-items [data-slot$="Item4"] {
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1.43;
+      color: #4D4D4D;
+      padding-left: 24px;
+      position: relative;
+    }
+    .col-items [data-slot$="Item1"]::before,
+    .col-items [data-slot$="Item2"]::before,
+    .col-items [data-slot$="Item3"]::before,
+    .col-items [data-slot$="Item4"]::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #73CD94;
+    }
+    .col-right .col-items [data-slot$="Item1"]::before,
+    .col-right .col-items [data-slot$="Item2"]::before,
+    .col-right .col-items [data-slot$="Item3"]::before,
+    .col-right .col-items [data-slot$="Item4"]::before {
+      background-color: #999999;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide" data-template="comparison">
+    <div class="title-block">
+      <h1 data-slot="title">四叉树——正确性与优劣取舍</h1>
+      <p data-slot="subtitle">Correctness &amp; Trade-offs</p>
+    </div>
+    <div class="comparison-row">
+      <div class="comparison-col col-left">
+        <div class="col-header">
+          <h2 data-slot="leftLabel">优势</h2>
+        </div>
+        <div class="col-items">
+          <p data-slot="leftItem1">结构直观，适合二维空间查询</p>
+          <p data-slot="leftItem2">稀疏场景下显著减少比较次数</p>
+          <p data-slot="leftItem3">实现简单，易于理解</p>
+          <p data-slot="leftItem4">空间完备性保证查询正确</p>
+        </div>
+      </div>
+      <div class="comparison-col col-right">
+        <div class="col-header">
+          <h2 data-slot="rightLabel">劣势</h2>
+        </div>
+        <div class="col-items">
+          <p data-slot="rightItem1">对象频繁移动时，树需要反复删除/插入/分裂</p>
+          <p data-slot="rightItem2">极端分布下树深膨胀，维护成本吞掉收益</p>
+          <p data-slot="rightItem3">仅适用于2D（3D需要八叉树，结构更复杂）</p>
+          <p data-slot="rightItem4">阈值MAX_CAPACITY的选取影响性能</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body></html>
